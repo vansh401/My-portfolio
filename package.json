@@ -1,0 +1,25 @@
+{
+  "name": "my-portfolio",
+  "version": "1.0.0",
+  "description": "A Portfolio Website",
+  "main": "index.js",
+  "scripts": {
+    "server": "npm start --prefix backend",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vansh401/My-portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vansh401/My-portfolio/issues"
+  },
+  "homepage": "https://github.com/vansh401/My-portfolio#readme",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
