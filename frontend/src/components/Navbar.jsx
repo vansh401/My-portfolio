@@ -14,9 +14,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { Link as ScrollLink } from 'react-scroll';
+import ProgressBar from '../components/ProgressBar';  
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Projects", "Skills", "Journey", "Contact"];
+const navItems = ["Home", "Projects", "Skills", "Journey","Activities", "Contact"];
 
 function Navbar(props) {
   const { window } = props;
@@ -47,7 +49,15 @@ function Navbar(props) {
               }}
               onClick={() => handleItemClick(item)}
             >
-              <ListItemText primary={item} />
+              <ScrollLink
+                to={item}
+                spy={true}
+                smooth={true}
+                duration={500}
+                onClick={() => handleItemClick(item)}
+              >
+                <ListItemText primary={item} />
+              </ScrollLink>
             </ListItemButton>
           </ListItem>
         ))}
@@ -59,20 +69,23 @@ function Navbar(props) {
   const lastItemIndex = navItems.length - 1;
 
   return (
+    <>
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
+      <CssBaseline/>
+      <ProgressBar />
       <AppBar
         component="nav"
         sx={{
-            width:"99vw",
-            marginRight:"10px",
+           // width:"99vw",
+          // marginRight:"10px",
           color: "white",
-          borderRadius:10,marginTop:1
-        ,background: "#154128",
-        boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-        backdropFilter: "blur(8px)",
-        WebkitBackdropFilter: "blur(8px)" }}
-        
+          marginTop: 0.5,
+          background: "rgba(15, 18, 20, 0.08)",
+          boxShadow:
+            "#00f0fc 0px 6px 20px -20px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset",
+          backdropFilter: "blur(8px)",
+          WebkitBackdropFilter: "blur(8px)",
+        }}
       >
         <Toolbar>
           <IconButton
@@ -103,31 +116,39 @@ function Navbar(props) {
                 marginRight: "18px",
               }}
             ></div>
-            Vansh Verma
+            <span style={{ fontFamily: `"Exo 2", sans-serif` }}>Vansh Verma</span>
           </Typography>
 
-          <Box sx={{ display: { xs: "none", sm: "block" }}}>
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item, index) => (
-              <Button
+              <ScrollLink
                 key={item}
-                sx={{
-                  marginRight: "40px",
-                  backgroundColor: index === lastItemIndex ? "yellow" : "none",
-                  color:
-                    index === lastItemIndex
-                      ? "black"
-                      : selectedItem === item
-                      ? "white"
-                      : "#848884",
-                  "&:hover": {
-                    backgroundColor: index === lastItemIndex ? "yellow" : "none",
-                    color: index === lastItemIndex ? "black" : "#C0C0C0",
-                  },
-                }}
+                to={item}
+                spy={true}
+                smooth={true}
+                duration={500}
                 onClick={() => handleItemClick(item)}
               >
-                {item}
-              </Button>
+                <Button
+                  style={{ fontFamily: `"Exo 2", sans-serif`, letterSpacing: 2, fontWeight: 800 }}
+                  sx={{
+                    marginRight: "40px",
+                    backgroundColor: index === lastItemIndex ? "yellow" : "none",
+                    color:
+                      index === lastItemIndex
+                        ? "black"
+                        : selectedItem === item
+                          ? "white"
+                          : "#848884",
+                    "&:hover": {
+                      backgroundColor: index === lastItemIndex ? "yellow" : "none",
+                      color: index === lastItemIndex ? "black" : "#C0C0C0",
+                    },
+                  }}
+                >
+                  {item}
+                </Button>
+              </ScrollLink>
             ))}
           </Box>
         </Toolbar>
@@ -139,7 +160,7 @@ function Navbar(props) {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             display: { xs: "block", sm: "none" },
@@ -152,7 +173,10 @@ function Navbar(props) {
           {drawer}
         </Drawer>
       </nav>
+      <Box
+        sx={{ marginTop: 11 }}></Box>
     </Box>
+    </>
   );
 }
 

@@ -1,11 +1,23 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  font-family: "Quicksand", sans-serif;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
 
-
-body::-webkit-scrollbar{
-    display: none;
+.home_h1 {
+  font-family: "Exo 2", sans-serif;
+  font-size: 3.5em;
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgb(240, 255, 29) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
